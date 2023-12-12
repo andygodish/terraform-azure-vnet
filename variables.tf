@@ -23,6 +23,14 @@ variable "resource_group_name" {
   nullable    = false
   description = "The resource group name this private endpoint needs to be created in"
 }
+variable "subnets" {
+  description = "A list of subnets to create within the virtual network."
+  type = list(object({
+    name           = string
+    address_prefix = string
+  }))
+  default = []
+}
 variable "sub_prefix" {
   type        = string
   nullable    = false

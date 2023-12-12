@@ -5,6 +5,14 @@ resource "azurerm_virtual_network" "this" {
   resource_group_name = var.resource_group_name
   address_space       = var.address_space
 
+  dynamic "subnet" {
+    for_each = { for s in var.subnets : s.name => s }
+    content {
+      name           = subnet.value.name
+      address_prefix = subnet.value.address_prefix
+    }
+  }
+
   tags = merge(local.tags, var.tags)
 }
 
