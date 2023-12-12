@@ -1,7 +1,7 @@
 variable "address_space" {
-  type = list(string)
+  type        = list(string)
   description = "CIDR for the VNET"
-  nullable = false  
+  nullable    = false
 }
 variable "app_env" {
   type        = string
